@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    min-width: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+body {
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    /*background: #F8FCFF;*/
+    background: #FFFAF0;
+}
+
+.app-bg{
+    background: #FFFAF0;
+    background-image: radial-gradient(at 11.4% 56.7%, hsl(9, 30%, 95%) 0px, transparent 50%),radial-gradient(at 91.8% 58.0%, hsl(191, 100%, 93%) 0px, transparent 50%),radial-gradient(at 59.8% 96.8%, hsl(191, 100%, 88%) 0px, transparent 50%),radial-gradient(at 51.4% 49.8%, hsl(231, 79%, 89%) 0px, transparent 50%),radial-gradient(at 35.0% 16.0%, hsl(271, 79%, 89%) 0px, transparent 50%),radial-gradient(at 82.5% 13.5%, hsl(306, 100%, 90%) 0px, transparent 50%);
+    background-attachment: fixed;
+}
