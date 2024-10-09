@@ -3,8 +3,11 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { getRapier } from "~/components/physics/rapier";
-import { getBody, getMouseBall } from "~/components/physics.body";
+import { getRapier } from "~/components/animations/physics/rapier";
+import {
+  getBody,
+  getMouseBall,
+} from "~/components/animations/physics/physics.body";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";

@@ -1,12 +1,14 @@
 "use client";
 
-import PrimitiveAnimation from "~/components/primitive.animation";
-import EarthAnimation from "~/components/earth.animation";
+import PrimitiveAnimation from "~/components/animations/primitive.animation";
+import EarthAnimation from "~/components/animations/earth.animation";
 import { useMemo, useState } from "react";
-import WormholeAnimation from "~/components/wormhole.animation";
-import PhysicsAnimation from "~/components/physics.animation";
+import WormholeAnimation from "~/components/animations/wormhole.animation";
+import PhysicsAnimation from "~/components/animations/physics/physics.animation";
+import FiberAnimation from "~/components/animations/fiber/fiber.animation";
 
 enum Mode {
+  Fiber = "Fiber",
   Primitive = "Primitive",
   Earth = "Earth",
   Wormhole = "Wormhole",
@@ -14,9 +16,11 @@ enum Mode {
 }
 
 export default function HomePage() {
-  const [mode, setMode] = useState<Mode>(Mode.Primitive);
+  const [mode, setMode] = useState<Mode>(Mode.Fiber);
   const renderAnimation = useMemo(() => {
     switch (mode) {
+      case Mode.Fiber:
+        return <FiberAnimation />;
       case Mode.Primitive:
         return <PrimitiveAnimation />;
       case Mode.Earth:
@@ -36,6 +40,8 @@ export default function HomePage() {
 
   return (
     <>
+      {renderAnimation}
+
       <div
         className={
           "absolute inset-x-0 bottom-0 mx-auto size-fit rounded-t-2xl bg-white/55 p-3 backdrop-blur-xl"
@@ -54,8 +60,6 @@ export default function HomePage() {
             </button>
           ))}
       </div>
-
-      {renderAnimation}
     </>
   );
 }

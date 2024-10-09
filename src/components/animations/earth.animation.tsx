@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import assets from "~/assets";
-import getStarfield from "~/components/starfield";
-import getFresnelMat from "~/components/fresnelMat";
+import getStarfield from "~/components/animations/starfield";
+import getFresnelMat from "~/components/animations/fresnelMat";
 
 export default function EarthAnimation() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

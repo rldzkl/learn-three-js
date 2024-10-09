@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { Rapier } from "~/components/physics/rapier";
+import { Rapier } from "~/components/animations/physics/rapier";
 import { World } from "@dimforge/rapier3d-compat";
 
 const sceneMiddle = new THREE.Vector3(0, 0, 0);
