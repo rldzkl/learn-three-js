@@ -14,7 +14,7 @@ enum Mode {
 }
 
 export default function HomePage() {
-  const [mode, setMode] = useState<Mode>(Mode.Physics);
+  const [mode, setMode] = useState<Mode>(Mode.Primitive);
   const renderAnimation = useMemo(() => {
     switch (mode) {
       case Mode.Primitive:
@@ -48,7 +48,7 @@ export default function HomePage() {
               key={m}
               type={"button"}
               onClick={() => handleChangeMode(Mode[m])}
-              className={"mx-1 rounded-full bg-white px-5 py-2 drop-shadow"}
+              className={`mx-1 rounded-full bg-white px-5 py-2 text-black drop-shadow ${m === mode ? "opacity-100" : "opacity-50"}`}
             >
               {m}
             </button>
