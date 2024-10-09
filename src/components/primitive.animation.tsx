@@ -24,14 +24,16 @@ export default function PrimitiveAnimation() {
       alpha: true,
     });
     renderer.setSize(w, h);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     const fov = 75;
     const aspect = w / h;
     const near = 0.1;
-    const far = 10;
+    const far = 1000;
 
     const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.z = 2;
+    camera.position.z = 5;
 
     const scene = new THREE.Scene();
 
@@ -79,6 +81,21 @@ export default function PrimitiveAnimation() {
       controls.update();
     }
     animate();
+
+    // Handle window resize
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // Update camera aspect ratio
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+
+      // Update renderer size
+      renderer.setSize(width, height);
+    };
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
       renderer.dispose();

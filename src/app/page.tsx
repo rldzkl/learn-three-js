@@ -3,20 +3,26 @@
 import PrimitiveAnimation from "~/components/primitive.animation";
 import EarthAnimation from "~/components/earth.animation";
 import { useMemo, useState } from "react";
+import WormholeAnimation from "~/components/wormhole.animation";
 
 enum Mode {
   Primitive = "Primitive",
   Earth = "Earth",
+  Wormhole = "Wormhole",
 }
 
 export default function HomePage() {
-  const [mode, setMode] = useState<Mode>(Mode.Primitive);
+  const [mode, setMode] = useState<Mode>(Mode.Wormhole);
   const renderAnimation = useMemo(() => {
     switch (mode) {
       case Mode.Primitive:
         return <PrimitiveAnimation />;
       case Mode.Earth:
         return <EarthAnimation />;
+      case Mode.Wormhole:
+        return <WormholeAnimation />;
+      default:
+        return null;
     }
   }, [mode]);
 
