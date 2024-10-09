@@ -13,6 +13,7 @@ export default function PrimitiveAnimation() {
     if (!canvasRef.current || _init.current) return;
     _init.current = true;
 
+    //renderer
     const canvas = canvasRef.current;
 
     const w = window.innerWidth;
@@ -27,6 +28,10 @@ export default function PrimitiveAnimation() {
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
 
+    //scene
+    const scene = new THREE.Scene();
+
+    //camera
     const fov = 75;
     const aspect = w / h;
     const near = 0.1;
@@ -34,8 +39,6 @@ export default function PrimitiveAnimation() {
 
     const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     camera.position.z = 5;
-
-    const scene = new THREE.Scene();
 
     //controls
     const controls = new OrbitControls(camera, canvas);
@@ -102,9 +105,5 @@ export default function PrimitiveAnimation() {
     };
   }, [canvasRef]);
 
-  return (
-    <div className={"size-fit"}>
-      <canvas ref={canvasRef} className={"size-fit"} />
-    </div>
-  );
+  return <canvas ref={canvasRef} />;
 }

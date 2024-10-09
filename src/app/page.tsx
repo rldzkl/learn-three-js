@@ -4,15 +4,17 @@ import PrimitiveAnimation from "~/components/primitive.animation";
 import EarthAnimation from "~/components/earth.animation";
 import { useMemo, useState } from "react";
 import WormholeAnimation from "~/components/wormhole.animation";
+import PhysicsAnimation from "~/components/physics.animation";
 
 enum Mode {
   Primitive = "Primitive",
   Earth = "Earth",
   Wormhole = "Wormhole",
+  Physics = "Physics",
 }
 
 export default function HomePage() {
-  const [mode, setMode] = useState<Mode>(Mode.Wormhole);
+  const [mode, setMode] = useState<Mode>(Mode.Physics);
   const renderAnimation = useMemo(() => {
     switch (mode) {
       case Mode.Primitive:
@@ -21,6 +23,8 @@ export default function HomePage() {
         return <EarthAnimation />;
       case Mode.Wormhole:
         return <WormholeAnimation />;
+      case Mode.Physics:
+        return <PhysicsAnimation />;
       default:
         return null;
     }
@@ -41,6 +45,7 @@ export default function HomePage() {
           .filter((key) => isNaN(Number(key)))
           .map((m) => (
             <button
+              key={m}
               type={"button"}
               onClick={() => handleChangeMode(Mode[m])}
               className={"mx-1 rounded-full bg-white px-5 py-2 drop-shadow"}
